@@ -1,0 +1,122 @@
+---
+description: Apply these rules when creating the project
+globs:
+alwaysApply: true
+---
+## Project Overview
+
+*   **Type:** Mobile App (React Native + Expo)
+*   **Description:** Develop a minimalist mobile app focused on personal accountability and self-reflection. Users answer daily questions, track progress, and stay motivated.
+*   **Primary Goal:** Allow users to answer daily reflection questions, visualize streaks, and maintain personal accountability.
+
+## Project Structure
+
+### Framework-Specific Routing
+
+*   **Directory Rules:**
+
+    *   `React Native Expo SDK 49 + React Navigation 6`: Use a central `src/navigation` folder. Define navigators in `src/navigation/index.tsx` with createNativeStackNavigator and createBottomTabNavigator.
+    *   Example 1: Stack Navigator → `src/navigation/AppStack.tsx` containing OnboardingStack and MainStack.
+    *   Example 2: Tab Navigator → `src/navigation/MainTabs.tsx` with Dashboard, Progress, Settings screens.
+
+### Core Directories
+
+*   **Versioned Structure:**
+
+    *   `src/screens`: All screen components per React Navigation v6 conventions.
+    *   `src/components`: Reusable presentational components (buttons, inputs, modals).
+    *   `src/hooks`: Custom React hooks (useQuestions, useNotifications).
+    *   `src/services`: Platform services (storage, auth, notifications).
+    *   `src/navigation`: Navigator definitions and linking configuration.
+    *   `assets`: Static assets (icons, images, fonts).
+
+### Key Files
+
+*   **Stack-Versioned Patterns:**
+
+    *   `App.tsx`: Root entry using Expo-Router or manual navigator setup.
+    *   `src/navigation/index.tsx`: Root navigator registration.
+    *   `src/screens/OnboardingScreen.tsx`: First-time user setup flow.
+    *   `src/screens/SetupQuestionsScreen.tsx`: Custom questions management UI.
+    *   `src/screens/DashboardScreen.tsx`: Daily questions dashboard.
+    *   `src/screens/QuestionDetailScreen.tsx`: Single-question input view.
+    *   `src/screens/ProgressScreen.tsx`: Calendar and streak visualization.
+    *   `src/services/storage.ts`: Encrypted SQLite data layer.
+    *   `src/services/notifications.ts`: OneSignal or native push setup.
+
+## Tech Stack Rules
+
+*   **Version Enforcement:**
+
+    *   `expo@49`: Managed workflow only, no custom native modules. Must use Expo Go or EAS Build.
+    *   `react-native@0.71`: Functional components with hooks; no class components.
+    *   `typescript@>=4.8`: `strict` mode enabled in tsconfig.
+    *   `react-navigation@6`: Must use native-stack and tab navigators; no deprecated APIs.
+    *   `sqlite@^1.4.1`: Use secure/encrypted storage plugin (`expo-sqlite` + encryption layer).
+    *   `onesignal-expo-plugin@^2.0.0`: Configure push in `app.json` with correct permissions.
+    *   `firebase@9`: Modular Analytics SDK only; no legacy namespaced imports.
+
+## PRD Compliance
+
+*   "No Backend Server": Enforce local-only data storage; disallow remote fetch or REST clients.
+*   "Customizable daily reflection questions (up to 20)": UI and storage must cap at 20 and prevent additions beyond limit.
+*   "MVP Focus": No social sharing, no CSV export logic in codebase; placeholder comments only.
+
+## App Flow Integration
+
+*   **React Navigation Flow:**
+
+    *   OnboardingStack →
+        - OnboardingScreen → SetupQuestionsScreen → PermissionsScreen → MainTabs
+    *   MainTabs →
+        - DashboardScreen (`/dashboard`)
+        - ProgressScreen (`/progress`)
+        - SettingsScreen (`/settings`)
+    *   Dashboard → QuestionDetailScreen (via push) using param `questionId`.
+
+## Best Practices
+
+*   React Native
+    *   Use functional components and React hooks exclusively.
+    *   Wrap root in `GestureHandlerRootView` and `SafeAreaView`.
+    *   Leverage `react-native-reanimated` for animations.
+*   TypeScript
+    *   Enable `strict`, `noImplicitAny`, `strictNullChecks`.
+    *   Define interfaces for all screen props and service APIs.
+*   SQLite (encrypted)
+    *   Always begin transactions explicitly.
+    *   Use parameterized queries to prevent injection.
+*   OneSignal
+    *   Ask permission on first launch; respect user denial.
+    *   Handle background and foreground events separately.
+*   Firebase Analytics
+    *   Log custom events for question answered, streak broken, settings changed.
+*   Cursor
+    *   Use inline docblocks to feed AI code generation context.
+    *   Save cursor context files under `.cursor/` for reproducibility.
+*   Bolt
+    *   Use Bolt templates for React Native + TypeScript scaffolding.
+
+## Rules
+
+*   Derive folder/file patterns directly from techStackDoc versions.
+*   If React Native + Expo: enforce `src/screens`, `src/components`, and `src/navigation` directories. No web folders.
+*   Never mix navigation paradigms (e.g., no React Router in mobile app).
+*   Enforce TypeScript strictness across all modules.
+
+## Rules Metrics
+
+Before starting the project development, create a metrics file in the root of the project called `cursor_metrics.md`.
+
+### Instructions:
+*   Each time a cursor rule is used as context, update `cursor_metrics.md`.
+*   Use the following format in `cursor_metrics.md`:
+
+    # Rules Metrics
+
+    ## Usage
+    The number of times rules is used as context
+
+    *   rule-name.mdc: 5
+    *   another-rule.mdc: 2
+    *   ...other rules

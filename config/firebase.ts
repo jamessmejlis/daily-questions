@@ -1,6 +1,5 @@
-import { initializeApp, getApp, getApps } from "firebase/app";
-import { getAuth } from "firebase/auth";
-import Constants from "expo-constants";
+import { firebase } from '@react-native-firebase/app';
+import auth from '@react-native-firebase/auth';
 
 // Firebase configuration
 const firebaseConfig = {
@@ -12,14 +11,10 @@ const firebaseConfig = {
   appId: process.env.FIREBASE_APP_ID,
 };
 
-// Initialize Firebase
-let app;
-
-if (getApps().length === 0) {
-  app = initializeApp(firebaseConfig);
-} else {
-  app = getApp();
+// Initialize Firebase if not already initialized
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
 }
 
-export const auth = getAuth(app);
-export default app;
+export { auth };
+export default firebase.app();

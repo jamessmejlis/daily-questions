@@ -1,134 +1,132 @@
-[![CodeGuide](/codeguide-backdrop.svg)](https://codeguide.dev)
+# Daily Questions Coach
 
-# CodeGuide Expo Firebase Starter
-
-A modern cross-platform mobile application starter template built with Expo and Firebase, featuring authentication and real-time database integration.
-
-## Tech Stack
-
-- **Framework:** [Expo](https://expo.dev/) (SDK 52)
-- **Authentication:** [Firebase Authentication](https://firebase.google.com/products/auth)
-- **Database:** [Firebase](https://firebase.google.com/)
-- **Navigation:** [Expo Router](https://docs.expo.dev/router/introduction/)
-- **UI Components:** [React Native](https://reactnative.dev/) with Expo's built-in components
-- **Icons:** [@expo/vector-icons](https://docs.expo.dev/guides/icons/)
-- **Animations:** [React Native Reanimated](https://docs.swmansion.com/react-native-reanimated/)
-
-## Prerequisites
-
-Before you begin, ensure you have the following:
-
-- Node.js 18+ installed
-- [Expo CLI](https://docs.expo.dev/get-started/installation/) installed globally
-- A [Firebase](https://firebase.google.com/) project for authentication and backend services
-- Generated project documents from [CodeGuide](https://codeguide.dev/) for best development experience
-- (Optional) [Expo Go](https://expo.dev/client) app installed on your mobile device
-
-## Getting Started
-
-1. **Clone the repository**
-
-   ```bash
-   git clone <repository-url>
-   cd codeguide-expo-firebase
-   ```
-
-2. **Install dependencies**
-
-   ```bash
-   npm install
-   ```
-
-3. **Environment Variables Setup**
-
-   - Copy the `.env.example` file to `.env`:
-     ```bash
-     cp .env.example .env
-     ```
-   - Fill in the environment variables in `.env` (see Configuration section below)
-
-4. **Start the development server**
-
-   ```bash
-   npx expo start
-   ```
-
-5. **Run the app:**
-   - Scan the QR code with Expo Go (Android)
-   - Scan the QR code with Camera app (iOS)
-   - Press 'i' for iOS simulator
-   - Press 'a' for Android emulator
-
-## Configuration
-
-### Firebase Setup
-
-1. Go to [Firebase Console](https://console.firebase.google.com/)
-2. Create a new project
-3. Add an app to your project (iOS and Android)
-4. Copy the Firebase configuration object
-5. Set up the necessary Firebase services (Authentication, Firestore, etc.)
-
-## Environment Variables
-
-Create a `.env` file in the root directory with the following variables:
-
-```env
-# Firebase Configuration
-FIREBASE_API_KEY=your_firebase_api_key
-FIREBASE_AUTH_DOMAIN=your_firebase_auth_domain
-FIREBASE_PROJECT_ID=your_firebase_project_id
-FIREBASE_STORAGE_BUCKET=your_firebase_storage_bucket
-FIREBASE_MESSAGING_SENDER_ID=your_firebase_messaging_sender_id
-FIREBASE_APP_ID=your_firebase_app_id
-```
+A beautiful, minimalist mobile app for personal accountability and self-reflection. Track your daily progress with customizable questions, build streaks, and stay motivated on your self-improvement journey.
 
 ## Features
 
-- 🔐 Firebase Authentication
-- 📦 Firebase Realtime Database/Firestore
-- 📱 Cross-platform (iOS & Android)
-- 🎨 Modern UI with native components
-- 🚀 File-based routing with Expo Router
-- 🔄 Real-time Updates
-- 📱 Responsive Design
-- 💫 Smooth animations with Reanimated
+- 📝 **Customizable Questions**: Create up to 20 personal reflection questions
+- 🎯 **Daily Tracking**: Answer questions with toggles, numbers, or text
+- 🔥 **Streak Tracking**: Build and maintain daily habits
+- 📊 **Progress Insights**: Visual calendar and completion statistics
+- 🔒 **Privacy First**: All data stored locally on your device
+- 🌙 **Dark Mode**: Automatic light/dark theme support
+- 📱 **Mobile Optimized**: Beautiful, responsive design for all screen sizes
+
+## Tech Stack
+
+- **Framework**: Expo SDK 52 + React Native
+- **Language**: TypeScript
+- **Navigation**: Expo Router with tab-based navigation
+- **Database**: SQLite with Expo SQLite
+- **Storage**: Expo SecureStore for sensitive data
+- **Styling**: React Native StyleSheet with custom design system
+- **Icons**: Lucide React Native
+- **Fonts**: Inter font family via Expo Google Fonts
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 18+ 
+- Expo CLI
+- iOS Simulator or Android Emulator (or Expo Go app)
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd daily-questions-coach
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Start the development server:
+```bash
+npm start
+```
+
+4. Run on your preferred platform:
+- Press `i` for iOS simulator
+- Press `a` for Android emulator
+- Scan QR code with Expo Go app
 
 ## Project Structure
 
 ```
-codeguide-expo-firebase/
-├── app/                # Expo Router pages
-├── components/         # React Native components
-├── constants/         # Constants and configurations
-├── hooks/             # Custom hooks
-├── assets/            # Static assets
-└── documentation/     # Generated documentation from CodeGuide
+daily-questions-coach/
+├── app/                    # Expo Router pages
+│   ├── (auth)/            # Authentication screens
+│   ├── (tabs)/            # Main tab navigation
+│   └── _layout.tsx        # Root layout
+├── components/            # Reusable UI components
+│   └── ui/               # Base UI components
+├── contexts/             # React Context providers
+├── services/             # Data services and database
+├── constants/            # Colors, spacing, typography
+├── hooks/                # Custom React hooks
+└── types/                # TypeScript type definitions
 ```
 
-## Documentation Setup
+## Key Features
 
-The documentation folder contains all the generated markdown files from CodeGuide:
+### Authentication
+- Local email/password authentication
+- Secure credential storage
+- Account management and deletion
 
-```bash
-documentation/
-├── project_requirements_document.md
-├── app_flow_document.md
-├── frontend_guideline_document.md
-└── backend_structure_document.md
-```
+### Question Management
+- Create, edit, archive, and delete questions
+- Three question types: toggle (yes/no), numeric, and text
+- Drag-and-drop reordering (coming soon)
 
-These documentation files serve as a reference for your project's features and implementation details.
+### Daily Reflection
+- Clean, distraction-free interface
+- Auto-save functionality
+- Skip questions option
+- Completion celebration with streak display
+
+### Progress Tracking
+- Calendar heatmap showing completion rates
+- Current and longest streak tracking
+- Weekly and monthly averages
+- Insightful progress analytics
+
+### Settings & Privacy
+- Notification preferences
+- Data export (coming soon)
+- Complete data privacy - everything stays on device
+- Account deletion with data cleanup
+
+## Design System
+
+The app uses a carefully crafted design system with:
+
+- **Colors**: Primary indigo, secondary green, with full light/dark mode support
+- **Typography**: Inter font family with consistent sizing scale
+- **Spacing**: 8px grid system for consistent layouts
+- **Components**: Reusable UI components following accessibility guidelines
+
+## Privacy & Security
+
+- **Local Storage**: All data stored on device using encrypted SQLite
+- **No Cloud Sync**: Your reflections never leave your device
+- **Secure Authentication**: Credentials stored using Expo SecureStore
+- **Data Ownership**: Complete control over your data with export/delete options
 
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
-## Learn More
+## License
 
-To learn more about the technologies used in this project:
+This project is licensed under the MIT License.
 
-- [Expo Documentation](https://docs.expo.dev/)
-- [Firebase Documentation](https://firebase.google.com/docs)
-- [React Native Documentation](https://reactnative.dev/docs/getting-started)
-- [Expo Router Documentation](https://docs.expo.dev/router/introduction/)
+## Acknowledgments
+
+- Inspired by Marshall Goldsmith's Daily Questions method
+- Built with love for the self-improvement community
+- Designed for privacy, simplicity, and effectiveness

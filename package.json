@@ -1,5 +1,5 @@
 {
-  "name": "daily-questions-coach",
+  "name": "daily-questions",
   "main": "expo-router/entry",
   "version": "1.0.0",
   "scripts": {

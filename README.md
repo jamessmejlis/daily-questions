@@ -14,7 +14,7 @@ A beautiful, minimalist mobile app for personal accountability and self-reflecti
 
 ## Tech Stack
 
-- **Framework**: Expo SDK 52 + React Native
+- **Framework**: Expo SDK 53 + React Native
 - **Language**: TypeScript
 - **Navigation**: Expo Router with tab-based navigation
 - **Database**: SQLite with Expo SQLite
